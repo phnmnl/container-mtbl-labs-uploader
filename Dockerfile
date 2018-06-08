@@ -6,12 +6,12 @@ LABEL software.version=0.1.0
 LABEL version=0.3
 LABEL software="MetaboLights Labs Uploader"
 
-ENV REVISION 77bb8886a1e15c4537928c4634e6a23428d93900 
+ENV REVISION 322e63f7166ba267ced40c5da2c10df200707e91
 
 RUN apt-get -y update && apt-get -y install --no-install-recommends \
-                      python-dev python-pip git && \
-    pip install --upgrade pip && pip install -U setuptools && \
-    pip install -e git+https://github.com/EBI-Metabolights/MetaboLightsLabs-PythonCLI.git@$REVISION#egg=uploadtometabolightslabs && \
+                      python-dev python-pip git curl && \
+    curl https://bootstrap.pypa.io/get-pip.py | python && pip install -U setuptools && \
+    pip install -e git+https://github.com/djcomlab/MetaboLightsLabs-PythonCLI.git@$REVISION#egg=uploadtometabolightslabs && \
     apt-get purge -y python-dev python-pip git && \
     apt-get install -y --no-install-recommends python && \ 
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
