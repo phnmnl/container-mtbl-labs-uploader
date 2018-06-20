@@ -6,16 +6,11 @@ LABEL software.version=0.1.0
 LABEL version=0.4
 LABEL software="MetaboLights Labs Uploader"
 
-RUN apk add --no-cache --virtual git-deps git openssh \
-    && git clone --depth 1 --single-branch -b develop https://github.com/ISA-tools/isatools-galaxy /files/galaxy \
-    && apk del git-deps \
-    && rm -rf /var/cache/apk/* \
-    && rm -rf /tmp/* /var/tmp/*
-
-RUN apt-get -y update && apt-get -y install --no-install-recommends git && \
-    git clone --depth 1 --single-branch -b develop https://github.com/ISA-tools/isatools-galaxy /files/galaxy \
-    apt-get purge -y git && \
-    apt-get install -y --no-install-recommends python && \ 
+RUN apt-get update -y && \
+    apt-get install --no-install-recommends git python python-pip ca-certificates -y && \
+    git clone --depth 1 --single-branch -b develop https://github.com/ISA-tools/isatools-galaxy /files/galaxy && \
+    pip install requests && \
+    apt-get purge git ca-certificates python-pip -y && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD runTest1.sh /usr/local/bin/runTest1.sh
