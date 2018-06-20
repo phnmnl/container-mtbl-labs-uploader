@@ -76,7 +76,13 @@ For direct docker usage:
 
 ```bash
 docker run -v $PWD:/data container-registry.phenomenal-h2020.eu/phnmnl/mtbl-labs-uploader -t "your-metabolights_labs_key" \
-                                                                                          -i /data/maf.zip /data/data.tar /data/isa.zip \
+                                                                                          --i /data/maf.zip /data/data.tar /data/isa.zip \
+                                                                                          -n -s
+```
+or
+```bash
+docker run -v $PWD:/data container-registry.phenomenal-h2020.eu/phnmnl/mtbl-labs-uploader -t "your-metabolights_labs_key" \
+                                                                                          --I /path/containing/data/and/isafiles/ \
                                                                                           -n -s
 ```
 
