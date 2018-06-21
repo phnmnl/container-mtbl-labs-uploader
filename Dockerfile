@@ -2,8 +2,8 @@ FROM docker-registry.phenomenal-h2020.eu/phnmnl/scp-aspera:v3.7.2_cv0.3.10
 MAINTAINER PhenoMeNal-H2020 Project ( phenomenal-h2020-users@googlegroups.com )
 
 LABEL Description="Allows users to upload data to MetaboLights Labs"
-LABEL software.version=0.1.0
-LABEL version=0.4
+LABEL software.version=0.1.1
+LABEL version=0.5
 LABEL software="MetaboLights Labs Uploader"
 
 RUN apt-get update -y && \
