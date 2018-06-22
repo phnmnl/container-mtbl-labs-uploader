@@ -24,7 +24,17 @@ MetaboLights semantic quality will be based on various controlled vocabularies l
 
 ## Functionality
 
-- Other Tools
+- Data Management / Study Dataset Deposition
+
+## Approaches
+
+- Metabolomics
+- Isotopic Labelling Analysis
+
+## Instrument Data Types
+
+- MS
+- NMR
 
 ## Approaches
   
@@ -37,6 +47,7 @@ MetaboLights semantic quality will be based on various controlled vocabularies l
 ## Container Contributors
 
 - [Pablo Moreno](https://github.com/pcm32) (EMBL-EBI)
+- [Philippe Rocca-Serra](https://github.com/proccaserra) (University of Oxford)
 
 ## Website
 
@@ -65,7 +76,13 @@ For direct docker usage:
 
 ```bash
 docker run -v $PWD:/data container-registry.phenomenal-h2020.eu/phnmnl/mtbl-labs-uploader -t "your-metabolights_labs_key" \
-                                                                                          -i /data/maf.zip /data/data.tar /data/isa.zip \
+                                                                                          --i /data/maf.zip /data/data.tar /data/isa.zip \
+                                                                                          -n -s
+```
+or
+```bash
+docker run -v $PWD:/data container-registry.phenomenal-h2020.eu/phnmnl/mtbl-labs-uploader -t "your-metabolights_labs_key" \
+                                                                                          --I /path/containing/data/and/isafiles/ \
                                                                                           -n -s
 ```
 
