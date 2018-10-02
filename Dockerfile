@@ -8,7 +8,7 @@ LABEL software="MetaboLights Labs Uploader"
 
 RUN apt-get update -y && \
     apt-get install --no-install-recommends git python python-pip ca-certificates -y && \
-    git clone --depth 1 --single-branch -b develop https://github.com/ISA-tools/isatools-galaxy /files/galaxy && \
+    git clone --depth 1 --single-branch -b master https://github.com/ISA-tools/isatools-galaxy /files/galaxy && \
     pip install requests && \
     apt-get purge git ca-certificates python-pip -y && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
