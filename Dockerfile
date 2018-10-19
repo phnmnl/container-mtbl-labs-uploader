@@ -2,13 +2,14 @@ FROM docker-registry.phenomenal-h2020.eu/phnmnl/scp-aspera:v3.7.2_cv0.3.10
 MAINTAINER PhenoMeNal-H2020 Project ( phenomenal-h2020-users@googlegroups.com )
 
 LABEL Description="Allows users to upload data to MetaboLights Labs"
-LABEL software.version=0.1.1
+LABEL software.version=0.1.2
 LABEL version=0.5
 LABEL software="MetaboLights Labs Uploader"
 
 RUN apt-get update -y && \
     apt-get install --no-install-recommends git python python-pip ca-certificates -y && \
     git clone --depth 1 --single-branch -b develop https://github.com/ISA-tools/isatools-galaxy /files/galaxy && \
+    (cd /files/galaxy && git checkout b4630e0613be18ce9e5dc6c76645fb74b12efe64 ) && \
     pip install requests && \
     apt-get purge git ca-certificates python-pip -y && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
